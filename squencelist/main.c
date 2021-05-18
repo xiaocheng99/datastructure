@@ -52,7 +52,25 @@ int InsertValue(Sqlist* L,int i,ElemType e)
 	L->elem[i-1] = e;
 	L->length+=1;
 	int PrintList(Sqlist*);
+	printf("After insert");
+	fflush(stdout);
 	PrintList(L);
+}
+
+ElemType DeleteValue(Sqlist* L,int i)
+{
+	ElemType e;
+	e = L->elem[i-1];
+	for(int  j= i-1;j<L->length-1;j++)
+	{
+		L->elem[j] = L->elem[j+1];
+	}
+	L->length-=1;
+	printf("After delete");
+	fflush(stdout);
+	int PrintList(Sqlist *L);
+	PrintList(L);
+	return e;
 }
 int PrintList(Sqlist *L)
 {
@@ -76,5 +94,6 @@ int main()
 	ValueList(sqlist);
 	PrintList(sqlist);
 	InsertValue(sqlist,2,4);
+	DeleteValue(sqlist,2);
 	return 0;
 }
