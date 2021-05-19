@@ -56,7 +56,6 @@ int InsertValue(Sqlist* L,int i,ElemType e)
 	fflush(stdout);
 	PrintList(L);
 }
-
 ElemType DeleteValue(Sqlist* L,int i)
 {
 	ElemType e;
@@ -72,6 +71,11 @@ ElemType DeleteValue(Sqlist* L,int i)
 	PrintList(L);
 	return e;
 }
+ElemType GetElem(Sqlist* L,int i)
+{
+	return L->elem[i-1];
+}
+
 int PrintList(Sqlist *L)
 {
 	int i = 0;
