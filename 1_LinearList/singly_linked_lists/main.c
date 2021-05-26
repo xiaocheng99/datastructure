@@ -77,6 +77,53 @@ LinkList taillInsert(LinkList L)
 	r->next = NULL;
 	return L;
 }
+
+LNode *getElem(LinkList L,int i)
+{
+	int j = 0;
+	LNode *p = L;
+
+	while((p->next != NULL) && (j<i))
+	{
+		p = p->next;
+		++j;
+	}
+	printf("the numer is %d\n",p->data);
+	return p;
+}
+
+LNode *locateElem(LinkList L,int e)
+{
+	LNode *p = L->next;
+	while(p != NULL && p->data != e)
+	{
+		p = p->next;
+	}
+
+	printf("the numbers is %d\n",p->data);
+	return p;
+}
+
+int insertValue(LinkList L, int i, int e )
+{	
+	LinkList p = getElem(L,i-1);
+	LNode *s =(LNode*)malloc(sizeof(LNode));
+	s->data = e;
+	s->next = p->next;
+	p->next = s;
+
+	return 1;
+}
+
+int deleteValue(LinkList L, int i)
+{
+	LNode *p = getElem(L,i-1);
+	LNode *q = p->next;
+	p->next = q->next;
+	free(q);
+
+	return 1;
+}
 void printList(LinkList L)
 {
 	if(!L) return;
@@ -98,6 +145,12 @@ int main()
 	LinkList L;
 	//headInsert(L);
 	L = taillInsert(L);
+	printList(L);
+	getElem(L,2);
+	locateElem(L,2);
+	insertValue(L,2,99);
+	printList(L);
+	deleteValue(L,2);
 	printList(L);
 	return 0;
 }
